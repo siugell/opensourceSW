@@ -1,0 +1,117 @@
+# CLI2
+
+## Standard Output Redirection
+By default, standard output is displayed on the screen. However, it can be redirected to a file using `>`.
+- Example: `ls -lh > file_list.txt`
+
+To view the contents of a file, use `cat`:
+- Example: `cat file_list.txt`
+
+### Appending to a File
+Use `>>` to append to a file:
+- Example: `ls -lh >> file_list.txt`
+
+## Standard Input Redirection
+By default, standard input comes from the keyboard. You can use `<` to take input from a file.
+- Example: `sort < words.txt > sorted_words.txt`  
+  (Sorts `words.txt` and saves the output to `sorted_words.txt`)
+
+## Pipelining
+Pipelines (`|`) allow chaining commands, where the output of one command is the input for the next.
+- Example: `ls -lh | less`  
+  (The output of `ls -lh` is passed to `less`)
+- Example: `ls | wc -l`  
+  (Counts the number of lines in the output of `ls`)
+
+## Echo Command
+The `echo` command displays the text passed to it.
+- Example: `echo *`  
+  (Displays all files in the current directory)
+- Example: `echo ~`  
+  (Displays the home directory of the current user)
+
+You can use a backslash (`\`) to break long commands across lines for better readability.
+
+---
+
+## Permissions
+
+### File Types
+- `-rwxrwxrwx`: If the first character is `-`, it’s a regular file. If it's `d`, it's a directory.
+  
+The next three characters indicate the owner’s permissions (read, write, execute).  
+The following three characters represent the group's permissions, and the final three characters represent others' permissions.
+
+### Changing Permissions
+Use `chmod` to change permissions:
+- Example: `chmod <permissions> <file>`
+
+Permissions are represented as a three-digit number, where each digit corresponds to the owner, group, and others. Each digit is a sum of the binary representation of read, write, and execute permissions:
+- Example: `chmod 600 Readme.md`
+  - `6 = 110 = rw-` for the owner
+  - `0 = 000 = ---` for the group
+  - `0 = 000 = ---` for others
+
+- Example: `chmod 777 file`  
+  (Grants read, write, and execute permissions to everyone)
+
+### Superuser Privileges
+A superuser (or system admin) can execute commands with elevated privileges using `sudo`.
+- Example: `sudo <command>`
+- To maintain `sudo` status, use: `sudo -i`
+
+---
+
+## Text Editors
+Common CLI-based text editors include:
+1. `vi` / `vim`
+2. `emacs`
+3. `nano`
+4. `gedit`
+5. `kwrite`
+
+---
+
+## Shell Scripts
+
+To create a shell script using `nano`:
+1. Run: `nano myscript.sh`
+2. Write the script and save the file.
+3. To execute the script: `sh myscript.sh`
+
+---
+
+## Command History
+
+The `history` command shows previously executed commands:
+- Example: `history > history_command.txt`  
+  (Saves the command history to a file)
+
+---
+
+## Downloading Files
+
+### wget
+Use `wget` to download files from a URL.
+- Example: `wget <URL>`
+
+### curl
+`curl` can be used for downloading and uploading files.
+- Example (download): `curl -o horse.jpg <URL>`
+- Example (upload): `curl -O <URL>`
+
+---
+
+## grep (Global Regular Expression Print)
+
+`grep` is used to search for patterns within a file.
+- Example: `grep "PAT" file.txt`
+
+### Common Options
+1. `-i`: Case-insensitive search
+2. `-v`: Inverts the match (shows lines without the pattern)
+3. `-n`: Displays line numbers
+4. `-r`: Recursive search (searches subdirectories)
+
+---
+
